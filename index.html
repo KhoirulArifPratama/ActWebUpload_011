@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Unggah File Sederhana</title>
+</head>
+
+<body>
+
+    <h2>Unggah File</h2>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Pilih file untuk diunggah:
+        <input type="file" name="fileToUpload" id="fileToUpload" onchange="previewGambar(event)">
+        <br><br>
+
+        <p>Pratinjau Gambar:</p>
+        <img id="box-preview" src="" alt="Preview"
+            style="max-width: 200px; display: none; border: 1px solid #ccc; padding: 3px;">
+        <br><br>
+
+        <input type="submit" value="Unggah File" name="submit">
+    </form>
+
+    <script>
+        // Fungsi JavaScript buat preview
+        function previewGambar(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('box-preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+
+</body>
+
+</html>
